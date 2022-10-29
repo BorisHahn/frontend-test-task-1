@@ -5,11 +5,11 @@ import onOrder from "./img/onOrder.png";
 const ProductItem = (product) => {
   const { availability, color, id, image_url, name, price, short_desc } =
     product.item;
-const statusIcon = availability ? inStock : onOrder;
+  const statusIcon = availability ? inStock : onOrder;
   return (
     <div className="item" key={id}>
       <div className="item__image-wrapper">
-      <img src={image_url} className="item__image" alt="Изображение товара" />
+        <img src={image_url} className="item__image" alt="Изображение товара" />
       </div>
       <img src={statusIcon} className="item__status" alt="Статус товара" />
       <p className="item__title">{name}</p>
