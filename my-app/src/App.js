@@ -6,13 +6,15 @@ import "../src/font.css";
 
 function App() {
   const [productList, setProductList] = useState([]);
-
+  const [totalCount, setTotalCount] = useState();
+  const numberOfButton = Math.ceil(totalCount / 4);
   function getJSON(page = 1) {
     return fetch(
       `http://testtask.alto.codes/front-products.php?skip=${(page - 1) * 4}`
     )
       .then((response) => response.json())
       .then((data) => {
+        setTotalCount(data.totalCount);
         return data.products;
       });
   }
@@ -40,7 +42,7 @@ function App() {
         <ul className="product-list">{items}</ul>
         <Pagination
           className="pugination"
-          count={10}
+          count={numberOfButton}
           color="primary"
           defaultPage={1}
           onChange={function (event, page) {
